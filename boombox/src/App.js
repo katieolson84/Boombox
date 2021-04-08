@@ -7,7 +7,7 @@ import Song from './components/Song';
 import Library from './components/Library'
 import Nav from './components/Nav'
 // Data import
-import data from './util';
+import data from './data';
 
 
 function App() {
@@ -40,6 +40,9 @@ const timeUpdateHandler = (e) => {
         currentSong={currentSong}
         setSongInfo={setSongInfo}
         songInfo={songInfo}
+        songs={songs}
+        setCurrentSong={setCurrentSong}
+        setSongs={setSongs}
       /> 
       <Library 
         audioRef={audioRef}
@@ -47,6 +50,7 @@ const timeUpdateHandler = (e) => {
         setCurrentSong={setCurrentSong}
         isPlaying={isPlaying}
         setSongs={setSongs}
+        libraryStatus={libraryStatus}
          />
       <audio 
             onTimeUpdate={timeUpdateHandler} 
