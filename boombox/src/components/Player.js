@@ -60,36 +60,43 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, s
         }
         playAudio(isPlaying, audioRef);
     };
-
+    // Add the styles
+    const trackAnim = {
+        transform: `translateX(${songInfo.animationPercentage}%)`,
+    }
     return(
         <div className='player'>
             <div className='time-control'>
                 <p>{getTime(songInfo.currentTime)}</p>
-                <input 
-                min= {0} 
-                max={songInfo.duration || 0} 
-                value={songInfo.currentTime} 
-                onChange={dragHandler}
-                type="range" />
+                <div style={{background: `linear-gradient(to right, ${currentSong.color[0]}, ${currentSong.color[1]})`}} className="track">
+                    <input 
+                    min= {0} 
+                    max={songInfo.duration || 0} 
+                    value={songInfo.currentTime} 
+                    onChange={dragHandler}
+                    type="range" />
+                    <div style={trackAnim}className="animate-track"></div>
+                </div>
                 <p>{songInfo.duration ? getTime(songInfo.duration) : "0:00"}</p>
             </div>
             <div className="play-control">
                 <FontAwesomeIcon 
-                onClick={() => skipTrackHandler('skip-back')}
-                className="skip-back" 
-                size="2x" 
-                icon={faAngleLeft}
+                    onClick={() => skipTrackHandler('skip-back')}
+                    className="skip-back" 
+                    size="2x" 
+                    icon={faAngleLeft}
                 />
                 <FontAwesomeIcon 
-                onClick={playSongHandler} 
-                className="play" 
-                size="2x" 
-                icon={isPlaying ? faPause : faPlay}/>
+                    onClick={playSongHandler} 
+                    className="play"  
+                    size="2x" 
+                    icon={isPlaying ? faPause : faPlay}
+                />
                 <FontAwesomeIcon 
-                className="skip-forward" 
-                size="2x" 
-                icon={faAngleRight}
-                onClick={() => skipTrackHandler('skip-forward')}
+                    className="skip-forward" 
+                    size="2x" 
+                    icon={faAngleRight}
+                    onClick={() => skipTrackHandler('skip-forward')}
                 />
             </div>
             
