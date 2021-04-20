@@ -1,4 +1,4 @@
-# Boombox
+
 <h1 align="center">Welcome to Boombox 👋</h1>
 <p>
   <a href="#" target="_blank">
