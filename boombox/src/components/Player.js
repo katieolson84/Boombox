@@ -66,19 +66,6 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, s
     }
     return(
         <div className='player'>
-            <div className='time-control'>
-                <p>{getTime(songInfo.currentTime)}</p>
-                <div style={{background: `linear-gradient(to right, ${currentSong.color[0]}, ${currentSong.color[1]})`}} className="track">
-                    <input 
-                    min= {0} 
-                    max={songInfo.duration || 0} 
-                    value={songInfo.currentTime} 
-                    onChange={dragHandler}
-                    type="range" />
-                    <div style={trackAnim}className="animate-track"></div>
-                </div>
-                <p>{songInfo.duration ? getTime(songInfo.duration) : "0:00"}</p>
-            </div>
             <div className="play-control">
                 <FontAwesomeIcon 
                     onClick={() => skipTrackHandler('skip-back')}
@@ -99,7 +86,19 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, s
                     onClick={() => skipTrackHandler('skip-forward')}
                 />
             </div>
-            
+            <div className='time-control'>
+                <p>{getTime(songInfo.currentTime)}</p>
+                <div style={{background: `linear-gradient(to right, ${currentSong.color[0]}, ${currentSong.color[1]})`}} className="track">
+                    <input 
+                    min= {0} 
+                    max={songInfo.duration || 0} 
+                    value={songInfo.currentTime} 
+                    onChange={dragHandler}
+                    type="range" />
+                    <div style={trackAnim}className="animate-track"></div>
+                </div>
+                <p>{songInfo.duration ? getTime(songInfo.duration) : "0:00"}</p>
+            </div>
         </div>
     )
 }
